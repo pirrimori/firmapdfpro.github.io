@@ -1,50 +1,227 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FirmaPDF Pro - Firma Digital Segura</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root { --primary: #1976D2; --bg: #0f172a; --text: #f8fafc; }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; }
-        .hero { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
-        .logo { width: 150px; border-radius: 50%; margin-bottom: 20px; box-shadow: 0 0 30px rgba(25, 118, 210, 0.3); }
-        .btn { padding: 12px 30px; border-radius: 30px; background: var(--primary); color: white; text-decoration: none; font-weight: bold; margin-top: 20px; transition: transform 0.3s; }
-        .btn:hover { transform: scale(1.05); }
-        .features { padding: 80px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        .feature-card { background: #1e293b; padding: 30px; border-radius: 20px; text-align: center; }
-        .feature-card i { font-size: 40px; color: var(--primary); margin-bottom: 15px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FirmaPDF Pro</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+:root {
+    --primary: #3b82f6;
+    --secondary: #9333ea;
+    --bg: #0f172a;
+    --card: rgba(255,255,255,0.05);
+    --text: #f1f5f9;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    scroll-behavior: smooth;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at top, #1e293b, #020617);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    bottom: 20px;
+    width: 30px;
+    height: 50px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    bottom: 30px;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    animation: scroll 1.5s infinite;
+}
+
+@keyframes scroll {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(15px); opacity: 0; }
+}
+
+.logo {
+    width: 140px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    box-shadow: 0 0 50px rgba(59,130,246,0.4);
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+h1 {
+    font-size: 3rem;
+    margin: 10px 0;
+    background: linear-gradient(90deg, #3b82f6, #9333ea);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    max-width: 500px;
+    opacity: 0.8;
+}
+
+/* BUTTON */
+.btn {
+    margin-top: 25px;
+    padding: 14px 35px;
+    border-radius: 999px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+}
+
+/* FEATURES */
+.features {
+    padding: 100px 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    padding: 30px;
+    border-radius: 20px;
+    background: var(--card);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: 0.4s;
+    text-align: center;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(59,130,246,0.5);
+}
+
+.feature-card i {
+    font-size: 40px;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, #3b82f6, #9333ea);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+/* FADE IN ANIMATION */
+.fade {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.8s ease;
+}
+
+.fade.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 40px 20px;
+    opacity: 0.6;
+    font-size: 14px;
+}
+</style>
 </head>
+
 <body>
-    <section class="hero">
-        <img src="logo.png" alt="FirmaPDF Pro Logo" class="logo">
-        <h1>FirmaPDF Pro</h1>
-        <p>La forma más rápida, segura y profesional de firmar tus documentos PDF.</p>
-        <a href="#" class="btn"><i class="fab fa-google-play"></i> Disponible en Google Play</a>
-    </section>
-    <section class="features">
-        <div class="feature-card">
+
+<section class="hero">
+    <img src="logo.png" class="logo">
+    <h1>FirmaPDF Pro</h1>
+    <p>Firma documentos PDF con seguridad profesional en segundos. Rápido, elegante y sin complicaciones.</p>
+    <a href="#" class="btn"><i class="fab fa-google-play"></i> Descargar App</a>
+</section>
+
+<section class="features">
+    <div class="grid">
+        <div class="feature-card fade">
             <i class="fas fa-shield-alt"></i>
-            <h3>Máxima Seguridad</h3>
-            <p>Protección biométrica y cifrado de certificados para que solo tú puedas firmar.</p>
+            <h3>Seguridad Total</h3>
+            <p>Cifrado avanzado y autenticación biométrica para máxima protección.</p>
         </div>
-        <div class="feature-card">
+
+        <div class="feature-card fade">
             <i class="fas fa-file-pdf"></i>
             <h3>Optimización Inteligente</h3>
-            <p>Reduce el tamaño de tus archivos PDF manteniendo la máxima calidad de firma.</p>
+            <p>Reduce peso sin perder calidad ni validez legal.</p>
         </div>
-        <div class="feature-card">
+
+        <div class="feature-card fade">
             <i class="fas fa-history"></i>
             <h3>Historial Completo</h3>
-            <p>Gestiona todos tus documentos firmados en un solo lugar.</p>
+            <p>Accede y gestiona todos tus documentos firmados fácilmente.</p>
         </div>
-        <div class="feature-card">
+
+        <div class="feature-card fade">
             <i class="fas fa-globe"></i>
             <h3>Multiidioma</h3>
-            <p>Disponible en Castellano, Inglés, Francés, Portugués y Alemán.</p>
+            <p>Disponible en varios idiomas para usuarios globales.</p>
         </div>
-    </section>
+    </div>
+</section>
+
+<div class="footer">
+    © 2026 FirmaPDF Pro — Todos los derechos reservados
+</div>
+
+<script>
+// Animación al hacer scroll
+const elements = document.querySelectorAll('.fade');
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+        }
+    });
+});
+
+elements.forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
