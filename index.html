@@ -10,16 +10,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <style>
-
 :root {
     --bg: #0b0f19;
+    --card: #111827;
     --text: #e5e7eb;
     --muted: #9ca3af;
     --primary: #3b82f6;
-}
-
-* {
-    box-sizing: border-box;
+    --accent: #f59e0b;
 }
 
 body {
@@ -34,54 +31,39 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    padding: 40px 20px;
+    align-items: center;
+    padding: 30px 20px;
     text-align: center;
 }
 
-/* LOGO MEJORADO */
 .logo {
-    width: 280px;
-    margin-bottom: 30px;
+    width: 220px;
     filter: drop-shadow(0 20px 40px rgba(59,130,246,0.3));
-    transition: 0.5s;
+    animation: float 4s ease-in-out infinite;
 }
 
-.logo:hover {
-    transform: scale(1.05) rotate(-1deg);
+@keyframes float {
+    0%,100% { transform: translateY(0);}
+    50% { transform: translateY(-10px);}
 }
 
-/* TITULO */
 h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 800;
-    letter-spacing: -1px;
-    margin: 0;
+    font-size: 2.8rem;
+    margin-top: 20px;
 }
 
 .subtitle {
-    max-width: 600px;
-    margin: 20px auto;
-    font-size: 1.2rem;
+    max-width: 500px;
     color: var(--muted);
 }
 
-/* BOTONES */
-.buttons {
-    display: flex;
-    gap: 15px;
-    margin-top: 25px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
 .btn {
+    margin-top: 20px;
     padding: 14px 28px;
     border-radius: 999px;
     text-decoration: none;
     font-weight: 600;
-    transition: 0.3s;
 }
 
 .btn-primary {
@@ -89,100 +71,90 @@ h1 {
     color: black;
 }
 
-.btn-primary:hover {
-    transform: translateY(-3px);
-}
-
-.btn-secondary {
-    border: 1px solid rgba(255,255,255,0.2);
-    color: white;
-}
-
-.btn-secondary:hover {
-    background: rgba(255,255,255,0.05);
-}
-
-/* SCROLL INDICATOR */
-.scroll {
-    margin-top: 60px;
-    opacity: 0.4;
-    animation: bounce 1.5s infinite;
-}
-
-@keyframes bounce {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(10px); }
-}
-
-/* FEATURES */
 .section {
-    padding: 120px 20px;
+    padding: 80px 20px;
     max-width: 1100px;
     margin: auto;
 }
 
-.section h2 {
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 60px;
+.fade {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.8s;
 }
 
+.fade.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* FEATURES */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
+    gap: 20px;
 }
 
 .card {
-    padding: 30px;
+    background: var(--card);
+    padding: 25px;
     border-radius: 20px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    border-color: rgba(59,130,246,0.5);
 }
 
 .card i {
-    font-size: 28px;
-    margin-bottom: 10px;
     color: var(--primary);
+    margin-bottom: 10px;
+}
+
+/* HOW IT WORKS */
+.steps {
+    display: grid;
+    gap: 20px;
+}
+
+.step {
+    display: flex;
+    gap: 15px;
+}
+
+.step-number {
+    background: var(--primary);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* SCREENSHOTS */
 .screens {
     display: flex;
-    gap: 30px;
+    gap: 20px;
     overflow-x: auto;
-    padding-bottom: 20px;
 }
 
-.phone {
-    min-width: 250px;
-    height: 500px;
-    border-radius: 40px;
-    background: #111827;
-    border: 2px solid rgba(255,255,255,0.1);
-    padding: 10px;
-    position: relative;
+.phone img {
+    width: 230px;
+    border-radius: 25px;
 }
 
-.screen {
-    width: 100%;
-    height: 100%;
-    border-radius: 30px;
-    background: linear-gradient(135deg, #1f2937, #020617);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #6b7280;
-    font-size: 14px;
+/* PRICING */
+.pricing {
+    display: grid;
+    gap: 20px;
 }
 
-/* FOOTER */
+.price-card {
+    background: var(--card);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.pro {
+    border: 2px solid var(--accent);
+}
+
 .footer {
     text-align: center;
     padding: 40px;
@@ -195,140 +167,131 @@ h1 {
 <body>
 
 <!-- HERO -->
-<section class="hero">
-
-    <!-- TU LOGO -->
+<section class="hero fade">
     <img src="logo.png" class="logo">
 
     <h1>FirmaPDF Pro</h1>
 
     <p class="subtitle">
-        Firma, protege y bloquea tus documentos PDF con total privacidad.
+        Firma, protege y bloquea PDFs con total privacidad.  
         Sin anuncios, sin conexión y con validez legal.
     </p>
 
-    <div class="buttons">
-        <a href="#" class="btn btn-primary">
-            <i class="fab fa-google-play"></i> Descargar
-        </a>
-
-        <a href="#" class="btn btn-secondary">
-            Ver demo
-        </a>
-    </div>
-
-    <div class="scroll">
-        <i class="fas fa-chevron-down"></i>
-    </div>
-
+    <a href="#" class="btn btn-primary">Descargar App</a>
 </section>
 
 <!-- FEATURES -->
-<section class="section">
-    <h2>Todo lo que necesitas</h2>
+<section class="section fade">
+    <h2>Funciones principales</h2>
 
     <div class="grid">
-
-        <div class="card">
-            <i class="fas fa-shield-alt"></i>
-            <h3>Seguridad Total</h3>
-            <p>Cifrado avanzado y autenticación biométrica.</p>
-        </div>
-
-        <div class="card">
-            <i class="fas fa-bolt"></i>
-            <h3>Ultra Rápido</h3>
-            <p>Firma documentos en segundos.</p>
-        </div>
-
-        <div class="card">
-            <i class="fas fa-file-pdf"></i>
-            <h3>Optimización</h3>
-            <p>Reduce tamaño sin perder calidad.</p>
-        </div>
-
-        <div class="card">
-            <i class="fas fa-globe"></i>
-            <h3>Global</h3>
-            <p>Disponible en múltiples idiomas.</p>
-        </div>
-
-    </div>
-</section>
-<!-- SEGURIDAD / PRIVACIDAD -->
-<section class="section">
-    <h2>Privacidad y control total</h2>
-
-    <div class="grid">
-
-        <div class="card">
-            <i class="fas fa-lock"></i>
-            <h3>Protección con contraseña</h3>
-            <p>Bloquea tus PDFs con contraseña para evitar accesos no autorizados.</p>
-        </div>
-
-        <div class="card">
-            <i class="fas fa-user-shield"></i>
-            <h3>Anti-edición</h3>
-            <p>Impide modificaciones posteriores para mantener la integridad del documento.</p>
-        </div>
 
         <div class="card">
             <i class="fas fa-certificate"></i>
             <h3>Firma con certificado FNMT</h3>
-            <p>Firma documentos con certificados oficiales válidos legalmente.</p>
         </div>
 
         <div class="card">
             <i class="fas fa-signature"></i>
             <h3>Firma manual</h3>
-            <p>Firma con tu dedo o stylus de forma rápida y natural.</p>
+        </div>
+
+        <div class="card">
+            <i class="fas fa-lock"></i>
+            <h3>Protección con contraseña</h3>
+        </div>
+
+        <div class="card">
+            <i class="fas fa-user-shield"></i>
+            <h3>Bloqueo anti-edición</h3>
         </div>
 
         <div class="card">
             <i class="fas fa-ban"></i>
             <h3>Sin publicidad</h3>
-            <p>Experiencia limpia, sin anuncios ni interrupciones.</p>
         </div>
 
         <div class="card">
             <i class="fas fa-shield-halved"></i>
-            <h3>Privacidad total</h3>
-            <p>No recopilamos estadísticas ni requiere conexión a internet.</p>
+            <h3>100% offline</h3>
+        </div>
+
+    </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="section fade">
+    <h2>Cómo funciona</h2>
+
+    <div class="steps">
+
+        <div class="step">
+            <div class="step-number">1</div>
+            <p>Abre o importa tu PDF</p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">2</div>
+            <p>Selecciona tipo de firma</p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">3</div>
+            <p>Firma y guarda el documento</p>
         </div>
 
     </div>
 </section>
 
 <!-- SCREENSHOTS -->
-<section class="section">
-    <h2>Así funciona</h2>
+<section class="section fade">
+    <h2>La app en acción</h2>
 
     <div class="screens">
+        <div class="phone"><img src="1.jpg"></div>
+        <div class="phone"><img src="2.jpg"></div>
+        <div class="phone"><img src="3.jpg"></div>
+        <div class="phone"><img src="4.jpg"></div>
+    </div>
+</section>
 
-        <div class="phone">
-            <div class="screen">Captura 1</div>
+<!-- PRICING -->
+<section class="section fade">
+    <h2>Planes</h2>
+
+    <div class="pricing">
+
+        <div class="price-card">
+            <h3>Gratis</h3>
+            <p>1 PDF al día</p>
         </div>
 
-        <div class="phone">
-            <div class="screen">Captura 2</div>
-        </div>
-
-        <div class="phone">
-            <div class="screen">Captura 3</div>
-        </div>
-
-        <div class="phone">
-            <div class="screen">Captura 4</div>
+        <div class="price-card pro">
+            <h3>Pro</h3>
+            <p><strong>3.99€</strong> pago único</p>
+            <p>Firmas ilimitadas</p>
         </div>
 
     </div>
 </section>
 
-<!-- FOOTER -->
 <div class="footer">
     © 2026 FirmaPDF Pro
 </div>
+
+<script>
+const elements = document.querySelectorAll('.fade');
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+        }
+    });
+});
+
+elements.forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
