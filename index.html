@@ -228,6 +228,63 @@
             filter: blur(20px);
         }
 
+        /* --- SECURITY PRO --- */
+        .security {
+            padding: 120px 0;
+            display: flex;
+            align-items: center;
+            gap: 80px;
+            position: relative;
+        }
+        
+        .security::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0,230,118,0.08) 0%, transparent 70%);
+            top: -100px;
+            left: -100px;
+            z-index: -1;
+            filter: blur(40px);
+        }
+        
+        .security-icon-large {
+            font-size: 7rem;
+            background: linear-gradient(135deg, #00e676, #00c853);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 25px rgba(0,230,118,0.3));
+        }
+        
+        .security h2 {
+            font-size: 3rem;
+            margin-bottom: 25px;
+        }
+        
+        .security-list {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .security-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+        }
+        
+        .security-item::before {
+            content: "✔";
+            color: #00e676;
+            font-weight: bold;
+            background: rgba(0,230,118,0.1);
+            padding: 5px 10px;
+            border-radius: 50px;
+        }
+
         /* --- SECCIÓN FUNCIONES PRINCIPALES --- */
         .features {
             padding: 100px 0;
@@ -642,14 +699,31 @@
     </section>
 
     <section id="seguridad" class="security container">
-        <div class="security-visual">
-            <div class="security-icon-large">🛡️</div>
+
+    <div class="security-visual">
+        <div class="security-icon-large">🛡️</div>
+    </div>
+
+    <div class="security-content">
+        <h2>Máxima Seguridad y Privacidad</h2>
+
+        <p>
+            Tus documentos <span class="highlight-accent">nunca salen de tu dispositivo</span>.
+        </p>
+
+        <p>
+            Todo el procesamiento se realiza <span class="highlight-accent">localmente</span>, 
+            garantizando una protección total de tus datos.
+        </p>
+
+        <div class="security-list">
+            <div class="security-item">Cifrado avanzado AES-256</div>
+            <div class="security-item">Procesamiento 100% local</div>
+            <div class="security-item">Sin servidores externos</div>
+            <div class="security-item">Privacidad total sin registros</div>
         </div>
-        <div class="security-content">
-            <h2>Máxima Seguridad y Privacidad</h2>
-            <p>Tus documentos <span class="highlight-accent">nunca salen de tu dispositivo</span>.</p>
-            <p>Toda la firma y procesamiento se realiza <span class="highlight-accent">localmente</span>, garantizando la máxima privacidad y seguridad de tus datos sensibles.</p>
-        </div>
+    </div>
+
     </section>
 
     <section id="pro" class="pro container">
