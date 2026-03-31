@@ -3,189 +3,176 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>FirmaPDF Pro</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-
-:root {
-    --bg: #0b0f19;
-    --card: #111827;
-    --text: #e5e7eb;
-    --muted: #9ca3af;
-    --primary: #3b82f6;
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #0b0f1a;
+  color: #fff;
 }
 
-body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: var(--bg);
-    color: var(--text);
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
 }
 
 /* HERO */
 .hero {
-    text-align: center;
-    padding: 40px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-.logo {
-    width: 160px;
-    margin-bottom: 10px;
+.hero-text {
+  max-width: 550px;
 }
 
-h1 {
-    margin: 10px 0;
-    font-size: 2.2rem;
+.hero h1 {
+  font-size: 48px;
+  line-height: 1.2;
 }
 
-.subtitle {
-    color: var(--muted);
-    font-size: 0.95rem;
+.hero p {
+  color: #aaa;
+  margin-top: 20px;
+  font-size: 18px;
 }
 
-/* PORTADA */
-.portada {
-    margin: 20px;
-    border-radius: 20px;
-    overflow: hidden;
+.cta {
+  margin-top: 30px;
 }
 
-.portada img {
-    width: 100%;
-    display: block;
+.cta button {
+  background: linear-gradient(90deg, #ffb300, #ff6f00);
+  border: none;
+  padding: 15px 30px;
+  font-size: 16px;
+  border-radius: 10px;
+  color: black;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 /* FEATURES */
 .features {
-    display: grid;
-    gap: 15px;
-    padding: 20px;
+  margin-top: 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
 }
 
 .card {
-    background: var(--card);
-    padding: 20px;
-    border-radius: 20px;
+  background: #111827;
+  padding: 25px;
+  border-radius: 15px;
+  transition: 0.3s;
 }
 
-.highlight {
-    border: 1px solid var(--primary);
+.card:hover {
+  transform: translateY(-5px);
 }
 
-/* TITULOS */
-h2 {
-    text-align: center;
-    margin-top: 40px;
+.card h3 {
+  margin-bottom: 10px;
 }
 
-/* SCREENSHOTS */
-.screens {
-    display: flex;
-    gap: 15px;
-    overflow-x: auto;
-    padding: 20px;
+/* SECURITY */
+.section {
+  margin-top: 100px;
 }
 
-.screens img {
-    width: 220px;
-    border-radius: 20px;
+.section h2 {
+  font-size: 36px;
 }
 
-/* PRICING */
-.pricing {
-    padding: 20px;
-    display: grid;
-    gap: 15px;
+.section p {
+  color: #aaa;
+  max-width: 700px;
 }
 
-.price {
-    background: var(--card);
-    padding: 20px;
-    border-radius: 20px;
-    text-align: center;
-}
-
-.pro {
-    border: 2px solid var(--primary);
-}
-
+/* FOOTER */
 .footer {
-    text-align: center;
-    padding: 30px;
-    color: var(--muted);
+  margin-top: 80px;
+  padding: 40px 0;
+  text-align: center;
+  color: #666;
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
-<section class="hero">
-    <img src="logo.png" class="logo">
-    <h1>FirmaPDF Pro</h1>
-
-    <p class="subtitle">
-        Firma, protege y bloquea PDFs con validez legal  
-        sin anuncios y sin conexión a internet
+<div class="container hero">
+  <div class="hero-text">
+    <h1>Firma documentos PDF en segundos</h1>
+    <p>
+      La forma más rápida, segura y profesional de firmar documentos desde tu móvil.
+      Sin registros. Sin complicaciones.
     </p>
-</section>
 
-<!-- PORTADA -->
-<div class="portada">
-    <img src="portada.png">
+    <div class="cta">
+      <button>Descargar en Google Play</button>
+    </div>
+  </div>
+
+  <img src="app-preview.png" alt="App preview" style="max-width:400px;">
 </div>
 
-<!-- FEATURES -->
-<h2>Funciones principales</h2>
+<div class="container features">
+  <div class="card">
+    <h3>✍️ Firma manual</h3>
+    <p>Dibuja tu firma o usa una guardada.</p>
+  </div>
 
-<div class="features">
+  <div class="card">
+    <h3>🔐 Firma digital</h3>
+    <p>Soporte para certificados (.p12, .pfx).</p>
+  </div>
 
-    <div class="card highlight">
-        <h3>Firma con certificado FNMT</h3>
-        <p>Firma documentos con certificados oficiales válidos legalmente (.p12, .pfx)</p>
-    </div>
+  <div class="card">
+    <h3>⚡ Rápido y preciso</h3>
+    <p>Posiciona tu firma exactamente donde quieras.</p>
+  </div>
 
-    <div class="card">
-        <h3>Firma manual</h3>
-        <p>Dibuja tu firma o usa una guardada</p>
-    </div>
+  <div class="card">
+    <h3>📄 Formularios PDF</h3>
+    <p>Rellena documentos fácilmente.</p>
+  </div>
 
-    <div class="card">
-        <h3>Protección de PDF</h3>
-        <p>Bloquea con contraseña y evita modificaciones</p>
-    </div>
+  <div class="card">
+    <h3>🔒 Seguridad total</h3>
+    <p>Cifrado AES y procesamiento local.</p>
+  </div>
 
-    <div class="card">
-        <h3>Privacidad total</h3>
-        <p>Sin anuncios, sin estadísticas y sin internet</p>
-    </div>
-
+  <div class="card">
+    <h3>📚 Historial</h3>
+    <p>Accede a todos tus documentos firmados.</p>
+  </div>
 </div>
 
-<!-- PRICING -->
-<h2>Planes</h2>
+<div class="container section">
+  <h2>Privacidad absoluta</h2>
+  <p>
+    Tus documentos nunca salen de tu dispositivo.
+    Todo el procesamiento se realiza localmente garantizando máxima seguridad.
+  </p>
+</div>
 
-<div class="pricing">
-
-    <div class="price">
-        <h3>Gratis</h3>
-        <p>3 días</p>
-    </div>
-
-    <div class="price pro">
-        <h3>Pro</h3>
-        <p><strong>4.99€</strong></p>
-        <p>Firmas ilimitadas</p>
-    </div>
-
+<div class="container section">
+  <h2>Modo Pro</h2>
+  <p>
+    Desbloquea todo el potencial: firmas ilimitadas, certificados digitales
+    y rendimiento máximo sin restricciones.
+  </p>
 </div>
 
 <div class="footer">
-    © 2026 FirmaPDF Pro
+  © 2024 FirmaPDF Pro · Desarrollado con ❤️
 </div>
 
 </body>
