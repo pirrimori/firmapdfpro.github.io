@@ -1,38 +1,176 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Política de Privacidad - FirmaPdf</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Política de Privacidad - FirmaPDF Pro</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg-dark: #0b0f1a;
+    --bg-card: #161c2d;
+    --text-main: #ffffff;
+    --text-muted: #a0aabf;
+    --primary: #ffb300;
+    --accent: #00e676;
+    --border: rgba(255,255,255,0.05);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.7;
+}
+
+/* CONTENEDOR */
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 120px 20px 60px;
+}
+
+/* HEADER */
+.header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.header h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.header p {
+    color: var(--text-muted);
+}
+
+/* CARD */
+.card {
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    border: 1px solid var(--border);
+    transition: 0.3s;
+}
+
+.card:hover {
+    border-color: rgba(255,179,0,0.2);
+    transform: translateY(-3px);
+}
+
+/* TITULOS */
+h2 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: var(--primary);
+}
+
+/* LISTAS */
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+    color: var(--text-muted);
+}
+
+/* DESTACADO */
+.highlight {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    margin-top: 50px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+</style>
 </head>
+
 <body>
-    <h1>Política de Privacidad</h1>
 
-```
-<p>Esta aplicación ("FirmaPdf") no recopila ni comparte datos personales de los usuarios.</p>
+<div class="container">
 
-<h2>Información que no recopilamos</h2>
-<ul>
-    <li>No recopilamos datos personales</li>
-    <li>No almacenamos documentos en servidores externos</li>
-    <li>No compartimos información con terceros</li>
-</ul>
+    <div class="header">
+        <h1>🔐 Política de Privacidad</h1>
+        <p>Tu seguridad y privacidad son nuestra prioridad.</p>
+    </div>
 
-<h2>Archivos</h2>
-<p>Los documentos PDF y firmas se procesan únicamente en el dispositivo del usuario.</p>
+    <div class="card">
+        <p>
+            <span class="highlight">FirmaPDF Pro</span> no recopila ni comparte datos personales.
+            Toda la información se mantiene en tu dispositivo.
+        </p>
+    </div>
 
-<h2>Compras dentro de la app</h2>
-<p>Las compras son gestionadas por Google Play. No almacenamos datos de pago.</p>
+    <div class="card">
+        <h2>📵 Información que NO recopilamos</h2>
+        <ul>
+            <li>No recopilamos datos personales</li>
+            <li>No almacenamos documentos en servidores externos</li>
+            <li>No compartimos información con terceros</li>
+        </ul>
+    </div>
 
-<h2>Seguridad</h2>
-<p>La aplicación utiliza almacenamiento local seguro del dispositivo.</p>
+    <div class="card">
+        <h2>📄 Archivos y documentos</h2>
+        <p>
+            Todos los PDFs y firmas se procesan <span class="highlight">localmente en tu dispositivo</span>.
+            Tus documentos nunca abandonan tu móvil.
+        </p>
+    </div>
 
-<h2>Cambios</h2>
-<p>Nos reservamos el derecho de actualizar esta política en el futuro.</p>
+    <div class="card">
+        <h2>💳 Compras dentro de la app</h2>
+        <p>
+            Las compras son gestionadas por Google Play.
+            No almacenamos información de pago ni datos sensibles.
+        </p>
+    </div>
 
-<h2>Contacto</h2>
-<p>Para cualquier consulta: h.lazaro.c@gmail.com</p>
-```
+    <div class="card">
+        <h2>🛡️ Seguridad</h2>
+        <p>
+            Utilizamos almacenamiento seguro del sistema y procesamiento local
+            para garantizar la máxima protección de tus datos.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>🔄 Cambios en la política</h2>
+        <p>
+            Podemos actualizar esta política en el futuro para mejorar la transparencia
+            y adaptarnos a nuevas normativas.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>📩 Contacto</h2>
+        <p>
+            Para cualquier consulta puedes escribir a:<br>
+            <span class="highlight">h.lazaro.c@gmail.com</span>
+        </p>
+    </div>
+
+    <div class="footer">
+        © 2024 FirmaPDF Pro · Privacidad total · Sin seguimiento · Sin servidores
+    </div>
+
+</div>
 
 </body>
 </html>
