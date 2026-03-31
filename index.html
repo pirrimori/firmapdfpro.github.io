@@ -192,8 +192,19 @@
             transition: var(--transition);
         }
 
-        .app-mockup-container:hover {
-            transform: rotate(0deg) scale(1.03);
+        .app-mockup-container {
+            position: relative;
+            width: 520px;
+            max-width: 100%;
+            transform: rotate(-3deg);
+            filter: drop-shadow(0 20px 60px rgba(0,0,0,0.8));
+        }
+
+        .hero-visual {
+            flex: 1.2;
+        }
+        .hero {
+            gap: 80px;
         }
 
         .app-img {
@@ -568,10 +579,7 @@
             <div class="hero-content">
                 <h1>Firma documentos PDF en <span>segundos</span></h1>
                 <p>Es la forma más rápida, segura y profesional de firmar documentos PDF directamente desde tu móvil.</p>
-                <a href="#" class="btn-playstore">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play Store">
-                    Empieza a Firmar Ya
-                </a>
+                
             </div>
             <div class="hero-visual">
                 <div class="futuristic-glow"></div>
