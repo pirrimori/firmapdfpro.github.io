@@ -3,26 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RubriqDoc Professional - Gestión Legal de PDF en tu móvil</title>
+    <title>RubriqDoc Pro - Firma y Gestión de PDF Profesional</title>
     <link rel="icon" type="image/png" href="logo.png">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-dark: #070a13;
-            --bg-card: #111827;
-            --primary: #ffb300;
-            --primary-glow: rgba(255, 179, 0, 0.4);
-            --accent-blue: #3b82f6;
-            --accent-green: #10b981;
-            --text-main: #f9fafb;
-            --text-muted: #9ca3af;
-            --glass: rgba(255, 255, 255, 0.03);
-            --border-glass: rgba(255, 255, 255, 0.08);
+            --bg-dark: #0a0b10;
+            --bg-card: #1c1e26;
+            --bg-card-hover: #252833;
+            --primary: #FFB300; /* Oro Rubriq */
+            --primary-gradient: linear-gradient(135deg, #FFB300 0%, #FF8F00 100%);
+            --accent-blue: #00bcd4;
+            --text-main: #ffffff;
+            --text-muted: #a0a0ab;
+            --border: rgba(255, 255, 255, 0.1);
+            --shadow-premium: 0 20px 40px rgba(0,0,0,0.4);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
+        
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
             background-color: var(--bg-dark); 
@@ -33,111 +34,150 @@
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-        /* --- NAVIGATION --- */
+        /* --- HEADER --- */
         header {
             position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: rgba(7, 10, 19, 0.8); backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-glass);
+            background: rgba(10, 11, 16, 0.85); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
         }
-        nav { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        nav { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+        
         .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .logo img { height: 42px; border-radius: 10px; }
-        .logo-text { font-size: 1.4rem; font-weight: 800; color: #fff; }
+        .logo img { height: 38px; border-radius: 8px; }
+        .logo-text { font-size: 1.25rem; font-weight: 800; color: #fff; letter-spacing: -0.5px; }
         .logo-text span { color: var(--primary); }
 
-        /* --- BUTTONS --- */
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, #ff8f00 100%);
-            color: #000; padding: 14px 32px; border-radius: 14px;
-            text-decoration: none; font-weight: 700; display: inline-flex;
-            align-items: center; gap: 10px; transition: all 0.3s ease;
-            box-shadow: 0 8px 20px var(--primary-glow);
+        .btn-nav {
+            background: var(--primary-gradient);
+            color: #000; padding: 10px 20px; border-radius: 12px;
+            text-decoration: none; font-weight: 700; font-size: 0.9rem;
+            transition: 0.3s;
         }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 25px var(--primary-glow); }
 
         /* --- HERO --- */
-        .hero { padding: 180px 0 100px; position: relative; }
-        .hero-flex { display: flex; align-items: center; gap: 60px; }
-        .hero-content { flex: 1; }
-        .hero h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 24px; font-weight: 800; }
-        .hero h1 span { background: linear-gradient(to right, var(--primary), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 32px; max-width: 500px; }
+        .hero { padding: 160px 0 80px; position: relative; background: radial-gradient(circle at top right, rgba(255, 179, 0, 0.05), transparent); }
+        .hero-flex { display: flex; align-items: center; gap: 40px; }
+        .hero-content { flex: 1.2; }
         
-        .hero-visual { flex: 1; position: relative; display: flex; justify-content: center; }
-        .mockup-main { 
-            width: 300px; border: 8px solid #1f2937; border-radius: 40px; 
-            box-shadow: 0 30px 60px rgba(0,0,0,0.8); transform: rotate(-3deg);
-        }
-        .glow-circle {
-            position: absolute; width: 400px; height: 400px; 
-            background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
-            top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: -1; filter: blur(40px);
+        .premium-badge {
+            background: rgba(255, 179, 0, 0.1); color: var(--primary);
+            padding: 6px 16px; border-radius: 100px; font-weight: 700;
+            font-size: 0.8rem; display: inline-flex; align-items: center; gap: 8px;
+            margin-bottom: 24px; border: 1px solid rgba(255, 179, 0, 0.2);
         }
 
-        /* --- FEATURES SECTIONS --- */
-        section { padding: 100px 0; }
-        .section-tag { color: var(--primary); font-weight: 700; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: block; }
-        .section-title { font-size: 2.5rem; margin-bottom: 40px; }
+        .hero h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 24px; font-weight: 800; letter-spacing: -1.5px; }
+        .hero h1 span { color: var(--primary); }
+        .hero p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 32px; max-width: 550px; }
 
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-        .f-card { 
-            background: var(--bg-card); padding: 32px; border-radius: 24px; 
-            border: 1px solid var(--border-glass); transition: 0.3s;
+        .hero-visual { flex: 0.8; position: relative; }
+        .phone-frame {
+            width: 280px; background: #000; border: 12px solid #1c1e26;
+            border-radius: 45px; box-shadow: var(--shadow-premium);
+            margin: 0 auto; overflow: hidden; position: relative;
         }
-        .f-card:hover { border-color: var(--primary); background: rgba(255,255,255,0.02); transform: translateY(-5px); }
-        .f-icon { font-size: 2rem; margin-bottom: 20px; display: block; }
-        .f-card h3 { margin-bottom: 12px; font-size: 1.3rem; }
-        .f-card p { font-size: 0.95rem; color: var(--text-muted); }
+        .phone-frame img { width: 100%; display: block; }
 
-        /* --- SPECIAL MODULE: IA GOV --- */
-        .module-ia { background: linear-gradient(180deg, var(--bg-dark) 0%, #0f172a 100%); border-radius: 40px; padding: 60px; }
-        .ia-flex { display: flex; align-items: center; gap: 80px; }
-        .ia-list { list-style: none; margin-top: 24px; }
-        .ia-list li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; color: var(--text-muted); }
-        .ia-list b { color: #fff; display: block; }
-        .ia-check { color: var(--accent-green); font-weight: bold; }
+        /* --- TABS SECTION (Mirroring App) --- */
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.5rem; font-weight: 800; letter-spacing: -1px; }
+        .section-header p { color: var(--text-muted); margin-top: 10px; }
 
-        /* --- SECURITY --- */
-        .security-banner { 
-            background: var(--glass); border: 1px solid var(--border-glass); 
-            padding: 40px; border-radius: 30px; text-align: center;
-            position: relative; overflow: hidden;
-        }
-        .security-banner::after {
-            content: "OFFLINE"; position: absolute; top: 10px; right: -30px;
-            background: var(--accent-green); color: #000; font-weight: 800;
-            padding: 5px 40px; transform: rotate(45deg); font-size: 0.7rem;
+        .app-tabs-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; 
+            margin-top: 40px;
         }
 
-        /* --- SCREENSHOTS --- */
-        .screenshot-scroll { 
-            display: flex; gap: 20px; overflow-x: auto; padding-bottom: 30px;
-            scrollbar-width: none;
+        .tab-group {
+            background: var(--bg-card); border-radius: 32px; padding: 30px;
+            border: 1px solid var(--border);
         }
-        .screenshot-scroll::-webkit-scrollbar { display: none; }
-        .ss-item { 
-            min-width: 240px; height: 500px; background: #111; 
-            border-radius: 20px; border: 4px solid #1f2937; overflow: hidden;
+        .tab-group-title {
+            display: flex; align-items: center; gap: 15px; margin-bottom: 25px;
+            color: var(--primary); font-weight: 800; text-transform: uppercase; font-size: 0.9rem;
         }
-        .ss-item img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .tools-list { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .tool-item {
+            background: rgba(255,255,255,0.03); padding: 20px; border-radius: 20px;
+            text-align: center; border: 1px solid transparent; transition: 0.3s;
+        }
+        .tool-item:hover { border-color: var(--primary); background: rgba(255,255,255,0.05); }
+        .tool-icon {
+            width: 45px; height: 45px; background: rgba(255,255,255,0.05);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 12px; font-size: 1.2rem;
+        }
+        .tool-item h4 { font-size: 0.9rem; font-weight: 600; }
+
+        /* --- IA GOV MODULE --- */
+        .ia-module {
+            background: linear-gradient(145deg, #1c1e26 0%, #0a0b10 100%);
+            border-radius: 40px; padding: 60px; border: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .ia-flex { display: flex; align-items: center; gap: 60px; }
+        .ia-content h2 { font-size: 2.2rem; margin-bottom: 20px; }
+        .ia-badge { background: #673ab7; color: white; padding: 4px 12px; border-radius: 6px; font-size: 0.7rem; font-weight: 800; vertical-align: middle; margin-left: 10px;}
+
+        .ia-features { list-style: none; }
+        .ia-features li { 
+            background: rgba(255,255,255,0.03); margin-bottom: 12px; padding: 16px 20px;
+            border-radius: 16px; display: flex; align-items: center; gap: 15px;
+            border-left: 4px solid var(--accent-blue);
+        }
+        .ia-features b { color: var(--accent-blue); }
+
+        /* --- SCREENSHOTS SLIDER --- */
+        .ss-container { padding: 40px 0; }
+        .ss-track { 
+            display: flex; gap: 20px; overflow-x: auto; padding: 20px 0 40px;
+            snap-type: x mandatory; scrollbar-width: none;
+        }
+        .ss-track::-webkit-scrollbar { display: none; }
+        .ss-card { 
+            min-width: 260px; border-radius: 30px; overflow: hidden; 
+            border: 6px solid #1c1e26; snap-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .ss-card img { width: 100%; display: block; }
+
+        /* --- SECURITY BANNER --- */
+        .privacy-card {
+            background: var(--primary-gradient); color: #000;
+            padding: 50px; border-radius: 40px; text-align: center;
+            margin: 80px 0; position: relative;
+        }
+        .privacy-card h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; }
+        .privacy-card p { font-weight: 600; opacity: 0.9; font-size: 1.1rem; }
 
         /* --- FOOTER --- */
-        footer { padding: 80px 0 40px; border-top: 1px solid var(--border-glass); }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
-        .footer-logo { font-weight: 800; font-size: 1.5rem; margin-bottom: 20px; display: block; text-decoration: none; color: #fff; }
-        .footer-links h4 { margin-bottom: 20px; color: var(--primary); }
-        .footer-links a { display: block; text-decoration: none; color: var(--text-muted); margin-bottom: 10px; transition: 0.3s; }
-        .footer-links a:hover { color: #fff; }
-        .copyright { text-align: center; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border-glass); padding-top: 40px; }
+        footer { padding: 80px 0 40px; border-top: 1px solid var(--border); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; }
+        .footer-logo { font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; display: block; text-decoration: none; color: #fff; }
+        .footer-links h4 { color: var(--primary); margin-bottom: 24px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+        .footer-links a { display: block; color: var(--text-muted); text-decoration: none; margin-bottom: 12px; transition: 0.2s; }
+        .footer-links a:hover { color: var(--primary); }
+        
+        .copyright { 
+            margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--border);
+            text-align: center; color: var(--text-muted); font-size: 0.85rem;
+        }
 
-        /* --- MOBILE ADAPTATION --- */
+        /* --- RESPONSIVE --- */
         @media (max-width: 992px) {
-            .hero-flex, .ia-flex, .footer-grid { flex-direction: column; text-align: center; grid-template-columns: 1fr; }
+            .hero-flex, .ia-flex { flex-direction: column; text-align: center; }
             .hero h1 { font-size: 2.8rem; }
-            .hero-content { display: flex; flex-direction: column; align-items: center; }
-            .hero-visual { order: -1; }
-            .mockup-main { width: 260px; }
-            .module-ia { padding: 30px; }
+            .hero p { margin: 0 auto 32px; }
+            .tools-list { grid-template-columns: 1fr 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+            .phone-frame { width: 240px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2.2rem; }
+            .app-tabs-grid { grid-template-columns: 1fr; }
+            .ia-module { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -147,11 +187,11 @@
         <div class="container">
             <nav>
                 <a href="#" class="logo">
-                    <img src="logo.png" alt="RubriqDoc logo">
-                    <span class="logo-text">RubriqDoc <span>Pro</span></span>
+                    <img src="logo.png" alt="RubriqDoc Logo">
+                    <span class="logo-text">RubriqDoc<span>Pro</span></span>
                 </a>
-                <a href="https://play.google.com/store/apps/details?id=com.pirri_mori.RubriqDoc" class="btn-primary">
-                    Descargar App
+                <a href="https://play.google.com/store/apps/details?id=com.pirri_mori.firmapdf" class="btn-nav">
+                    Instalar ahora
                 </a>
             </nav>
         </div>
@@ -161,78 +201,124 @@
         <div class="container">
             <div class="hero-flex">
                 <div class="hero-content">
-                    <span class="section-tag">Firma Digital de Nueva Generación</span>
-                    <h1>Firma, Edita y Protege tus <span>PDF</span></h1>
-                    <p>La herramienta profesional para gestionar certificados digitales, escaneo inteligente y edición documental con privacidad total.</p>
-                    <div class="hero-btns">
-                        <a href="https://play.google.com/store/apps/details?id=com.pirri_mori.RubriqDoc" class="btn-primary">
-                            <span>Empezar Prueba Gratis</span>
-                        </a>
+                    <div class="premium-badge">
+                        <span>★</span> PREMIUM ACTIVADO
+                    </div>
+                    <h1>Tu Oficina Legal en la <span>Palma de tu Mano</span></h1>
+                    <p>Firma con certificados oficiales, organiza páginas y protege tus documentos con tecnología de nivel bancario. Todo procesado 100% en tu dispositivo.</p>
+                    <a href="https://play.google.com/store/apps/details?id=com.pirri_mori.firmapdf" class="btn-nav" style="padding: 18px 40px; font-size: 1.1rem; border-radius: 16px;">
+                        Descargar para Android
+                    </a>
+                </div>
+                <div class="hero-visual">
+                    <div class="phone-frame">
+                        <!-- Imagen de la Home de la app -->
+                        <img src="app-home.jpg" alt="RubriqDoc App Home">
                     </div>
                 </div>
-                <div class="hero-visual">
-                    <div class="glow-circle"></div>
-                    <img src="app-main.png" alt="RubriqDoc Workspace" class="mockup-main">
-                </div>
             </div>
         </div>
     </section>
 
-    <section id="features">
+    <section id="tools">
         <div class="container">
-            <span class="section-tag">Potencia tu flujo de trabajo</span>
-            <h2 class="section-title">Herramientas Profesionales</h2>
-            
-            <div class="features-grid">
-                <div class="f-card">
-                    <span class="f-icon">🔐</span>
-                    <h3>Certificados Oficiales</h3>
-                    <p>Firma con validez legal usando archivos .p12 o .pfx. Compatible con el Almacén de Credenciales de Android.</p>
-                </div>
-                <div class="f-card">
-                    <span class="f-icon">📸</span>
-                    <h3>Escáner con Filtros</h3>
-                    <p>Captura documentos físicos y límpialos con IA: filtros Mágico, Auto, Blanco y Negro y Ahorro de Tinta.</p>
-                </div>
-                <div class="f-card">
-                    <span class="f-icon">📝</span>
-                    <h3>Relleno de Formularios</h3>
-                    <p>Completa campos interactivos y aplica los cambios permanentemente en el visor integrado.</p>
-                </div>
-                <div class="f-card">
-                    <span class="f-icon">🙈</span>
-                    <h3>Censura Permanente</h3>
-                    <p>Tacha información sensible. Los datos bajo el recuadro se eliminan físicamente del archivo.</p>
-                </div>
-                <div class="f-card">
-                    <span class="f-icon">📂</span>
-                    <h3>Organización Total</h3>
-                    <p>Une, divide, reordena, rota o añade páginas. Edita metadatos y añade numeración automática inteligente.</p>
-                </div>
-                <div class="f-card">
-                    <span class="f-icon">🛡️</span>
-                    <h3>Seguridad Avanzada</h3>
-                    <p>Bloqueo biométrico, encriptación AES-256 y modo "Ocultar en Recientes" para máxima privacidad.</p>
-                </div>
+            <div class="section-header">
+                <span style="color: var(--primary); font-weight: 800; font-size: 0.8rem; letter-spacing: 2px;">WORKSPACE</span>
+                <h2>Herramientas de Alto Nivel</h2>
+                <p>Todo lo que necesitas para gestionar PDF profesionales.</p>
             </div>
-        </div>
-    </section>
 
-    <section class="container">
-        <div class="module-ia">
-            <div class="ia-flex">
-                <div class="hero-visual">
-                    <img src="app-ia.jpg" alt="IA Gov" class="mockup-main" style="transform: rotate(3deg);">
+            <div class="app-tabs-grid">
+                <!-- ORGANIZAR -->
+                <div class="tab-group">
+                    <div class="tab-group-title">📁 Organizar</div>
+                    <div class="tools-list">
+                        <div class="tool-item">
+                            <div class="tool-icon">🍱</div>
+                            <h4>Unir</h4>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">✂️</div>
+                            <h4>Dividir</h4>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">🔄</div>
+                            <h4>Rotar</h4>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">📑</div>
+                            <h4>Extraer</h4>
+                        </div>
+                    </div>
                 </div>
-                <div class="hero-content" style="text-align: left;">
-                    <span class="section-tag" style="color: var(--accent-blue);">Módulo Especializado</span>
-                    <h2 class="section-title">IA Gov: Sedes Electrónicas</h2>
-                    <p>Diseñado para que tus documentos sean aceptados en la primera entrega ante administraciones públicas.</p>
-                    <ul class="ia-list">
-                        <li><span class="ia-check">✓</span> <div><b>Detección IA de Errores</b> Analiza DNIs, firmas faltantes y campos vacíos antes de enviar.</div></li>
-                        <li><span class="ia-check">✓</span> <div><b>Estándar PDF/A</b> Convierte tus archivos al estándar de preservación legal a largo plazo.</div></li>
-                        <li><span class="ia-check">✓</span> <div><b>Validación AutoFirma</b> Comprueba la compatibilidad técnica con las sedes electrónicas de España.</div></li>
-                    </ul>
+
+                <!-- EDICIÓN -->
+                <div class="tab-group">
+                    <div class="tab-group-title">✏️ Edición</div>
+                    <div class="tools-list">
+                        <div class="tool-item">
+                            <div class="tool-icon">🔍</div>
+                            <h4>Buscar Texto</h4>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">🖌️</div>
+                            <h4>Pintar</h4>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">🙈</div>
+                            <h4>Censurar</h4>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">📝</div>
+                            <h4>Anotar</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FIRMAS -->
+                <div class="tab-group">
+                    <div class="tab-group-title">🖋️ Firmas</div>
+                    <div class="tools-list">
+                        <div class="tool-item">
+                            <div class="tool-icon">🔐</div>
+                            <h4>Firmar PDF</h4>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">🔑</div>
+                            <h4>Certificados</h4>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">👁️</div>
+                            <h4>Validar</h4>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">✍️</div>
+                            <h4>Mis Firmas</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HERRAMIENTAS EXTRA -->
+                <div class="tab-group">
+                    <div class="tab-group-title">🛠️ Herramientas</div>
+                    <div class="tools-list">
+                        <div class="tool-item">
+                            <div class="tool-icon">🖼️</div>
+                            <h4>PDF a Imagen</h4>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">📄</div>
+                            <h4>Imagen a PDF</h4>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">📉</div>
+                            <h4>Comprimir</h4>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">💧</div>
+                            <h4>Marca Agua</h4>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -240,24 +326,49 @@
 
     <section>
         <div class="container">
-            <div class="security-banner">
-                <h2 style="font-size: 2.2rem; margin-bottom: 16px;">Privacidad 100% Offline</h2>
-                <p style="max-width: 800px; margin: 0 auto;">Tus documentos y certificados <b>nunca salen de tu dispositivo</b>. RubriqDoc procesa todo localmente para garantizar que tu información privada permanezca bajo tu control absoluto.</p>
+            <div class="ia-module">
+                <div class="ia-flex">
+                    <div class="hero-visual" style="flex: 0.6;">
+                        <div class="phone-frame" style="width: 240px; border-color: #252833;">
+                            <img src="app-ia.jpg" alt="IA Gov">
+                        </div>
+                    </div>
+                    <div class="ia-content" style="flex: 1;">
+                        <span class="premium-badge" style="background: rgba(0, 188, 212, 0.1); color: var(--accent-blue); border-color: rgba(0, 188, 212, 0.2);">MODO INTELIGENTE</span>
+                        <h2>IA Gov: Preparado para la Administración <span class="ia-badge">ESP</span></h2>
+                        <p style="margin-bottom: 25px;">RubriqDoc utiliza algoritmos avanzados para asegurar que tus trámites en sedes electrónicas sean perfectos.</p>
+                        <ul class="ia-features">
+                            <li><span>🛡️</span> <div><b>Análisis IA:</b> Detecta DNIs, firmas faltantes y campos vacíos automáticamente.</div></li>
+                            <li><span>🏛️</span> <div><b>Exportación PDF/A:</b> Cumple con los estándares legales de archivo a largo plazo.</div></li>
+                            <li><span>✅</span> <div><b>Validación AutoFirma:</b> Verifica la compatibilidad técnica antes de subir tus archivos.</div></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="screenshots">
+    <section class="container">
+        <div class="privacy-card">
+            <h2>Privacidad Offline Total</h2>
+            <p>Tus certificados y documentos jamás salen de tu móvil. Sin servidores, sin nubes, sin riesgos.</p>
+        </div>
+    </section>
+
+    <section id="screenshots">
         <div class="container">
-            <h2 class="section-title">Explora la Interfaz</h2>
-            <div class="screenshot-scroll">
-                <div class="ss-item"><img src="app-home.jpg" alt="Home"></div>
-                <div class="ss-item"><img src="app-organize.jpg" alt="Organizar"></div>
-                <div class="ss-item"><img src="app-edit.jpg" alt="Edición"></div>
-                <div class="ss-item"><img src="app-sign.jpg" alt="Firmas"></div>
-                <div class="ss-item"><img src="app-ia.jpg" alt="IA"></div>
-                <div class="ss-item"><img src="app-certificates.png" alt="Certificados"></div>
-                <div class="ss-item"><img src="app-settings.jpg" alt="Ajustes"></div>
+            <div class="section-header">
+                <h2>Interfaz Premium</h2>
+                <p>Diseño Dark Mode optimizado para la mejor experiencia de usuario.</p>
+            </div>
+            <div class="ss-track">
+                <div class="ss-card"><img src="app-home.jpg" alt="Home"></div>
+                <div class="ss-card"><img src="app-edit.jpg" alt="Edición"></div>
+                <div class="ss-card"><img src="app-sign.jpg" alt="Firmas"></div>
+                <div class="ss-card"><img src="app-ia.jpg" alt="IA Gov"></div>
+                <div class="ss-card"><img src="app-certificates.png" alt="Certificados"></div>
+                <div class="ss-card"><img src="app-settings.jpg" alt="Ajustes"></div>
+                <div class="ss-card"><img src="app-manual.jpg" alt="Manual"></div>
             </div>
         </div>
     </section>
@@ -267,22 +378,23 @@
             <div class="footer-grid">
                 <div class="footer-about">
                     <a href="#" class="footer-logo">RubriqDoc <span>Pro</span></a>
-                    <p>Tu herramienta de productividad legal definitiva. Desarrollado con precisión para usuarios exigentes.</p>
+                    <p>La herramienta definitiva para la gestión legal de documentos en dispositivos Android. Privacidad, potencia y sencillez.</p>
                 </div>
                 <div class="footer-links">
-                    <h4>Navegación</h4>
-                    <a href="#features">Funciones</a>
-                    <a href="https://play.google.com/store/apps/details?id=com.pirri_mori.RubriqDoc">Descargar</a>
-                    <a href="mailto:pirrimori@gmail.com">Soporte</a>
+                    <h4>Producto</h4>
+                    <a href="#tools">Funcionalidades</a>
+                    <a href="#screenshots">Interfaz</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.pirri_mori.firmapdf">Descargar</a>
                 </div>
                 <div class="footer-links">
-                    <h4>Legal</h4>
-                    <a href="privacy.html">Privacidad</a>
-                    <a href="terms.html">Términos</a>
+                    <h4>Ayuda</h4>
+                    <a href="mailto:pirrimori@gmail.com">Soporte Técnico</a>
+                    <a href="#">Política de Privacidad</a>
+                    <a href="#">Términos de Uso</a>
                 </div>
             </div>
             <div class="copyright">
-                <p>Desarrollado con ❤️ por pirri_mori en España</p>
+                <p>Desarrollado con ❤️ en España por <b>pirri_mori</b></p>
                 <p>&copy; 2024 RubriqDoc Professional. Todos los derechos reservados.</p>
             </div>
         </div>
