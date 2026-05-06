@@ -3,601 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FirmaPDF Pro - Firma Documentos PDF en Segundos desde tu Móvil</title>
+    <title>FirmaPdf Professional - Gestión Legal de PDF en tu móvil</title>
     <link rel="icon" type="image/png" href="logo.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* --- ESTILOS GENERALES (Reset & Variables) --- */
         :root {
-            --bg-dark: #0b0f1a; /* Fondo principal muy oscuro y futurista */
-            --bg-card: #161c2d; /* Fondo de tarjetas y secciones secundarias */
-            --text-main: #ffffff; /* Texto blanco principal */
-            --text-muted: #a0aabf; /* Texto gris para descripciones */
-            --primary: #ffb300; /* Dorado/Amarillo principal (de tus botones) */
-            --primary-dark: #e6a100; /* Dorado más oscuro para hover */
-            --accent: #00e676; /* Verde para checks y seguridad */
-            --transition: all 0.3s ease;
-            --shadow-futuristic: 0 10px 30px rgba(0,0,0,0.5), 0 0 15px rgba(255, 179, 0, 0.1);
+            --bg-dark: #070a13;
+            --bg-card: #111827;
+            --primary: #ffb300;
+            --primary-glow: rgba(255, 179, 0, 0.4);
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border-glass: rgba(255, 255, 255, 0.08);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: var(--bg-dark); 
+            color: var(--text-main); 
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-        h1, h2, h3 {
-            font-weight: 800;
-            letter-spacing: -0.02em;
-        }
-
-        p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            font-weight: 300;
-        }
-
-        /* --- HEADER / NAVEGACIÓN --- */
+        /* --- NAVIGATION --- */
         header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(11, 15, 26, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(7, 10, 19, 0.8); backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-glass);
         }
+        nav { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo img { height: 42px; border-radius: 10px; }
+        .logo-text { font-size: 1.4rem; font-weight: 800; color: #fff; }
+        .logo-text span { color: var(--primary); }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .logo-img {
-            height: 40px;
-            width: auto;
-        }
-
-        .logo-text {
-            color: var(--text-main);
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .logo-text span {
-            color: var(--primary);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-muted);
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        /* --- BOTÓN PLAY STORE (Futurista y Vistoso) --- */
-        .btn-playstore {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
+        /* --- BUTTONS --- */
+        .btn-primary {
             background: linear-gradient(135deg, var(--primary) 0%, #ff8f00 100%);
-            color: #000;
-            padding: 12px 28px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1rem;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(255, 179, 0, 0.3);
-            border: 2px solid transparent;
+            color: #000; padding: 14px 32px; border-radius: 14px;
+            text-decoration: none; font-weight: 700; display: inline-flex;
+            align-items: center; gap: 10px; transition: all 0.3s ease;
+            box-shadow: 0 8px 20px var(--primary-glow);
         }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 25px var(--primary-glow); }
 
-        .btn-playstore:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(255, 179, 0, 0.5), 0 0 10px rgba(255, 179, 0, 0.2);
-            border: 2px solid rgba(255,255,255,0.1);
-        }
-
-        .btn-playstore img {
-            height: 22px;
-        }
-
-        /* --- SECCIÓN HERO (Presentación Principal) --- */
-        .hero {
-            padding: 160px 0 100px;
-            display: flex;
-            align-items: center;
-            gap: 50px;
-            min-height: 90vh;
-        }
-
-        .hero-content {
-            flex: 1;
-            animation: fadeInLeft 1s ease forwards;
-        }
-
-        .hero-visual {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            position: relative;
-            animation: fadeInRight 1s ease forwards;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #fff 60%, #a0aabf);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero h1 span {
-            color: var(--primary);
-            -webkit-text-fill-color: var(--primary);
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 40px;
-            max-width: 540px;
-        }
-
-        /* Animación de flotado para la App */
-        .app-mockup-container {
-            position: relative;
-            width: 320px;
-            height: auto;
-            transform: rotate(-5deg);
-            filter: drop-shadow(var(--shadow-futuristic));
-            transition: var(--transition);
-        }
-
-        .hero-visual {
-            flex: 1.2;
-        }
-        .hero {
-            gap: 80px;
-        }
-
-        .app-img {
-            width: 100%;
-            height: auto;
-            border-radius: 36px;
-            border: 10px solid #1a1a1a; /* Borde del teléfono */
-        }
-
-        /* Efecto de luz futurista detrás del teléfono */
-        .futuristic-glow {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(255, 179, 0, 0.15) 0%, rgba(0,0,0,0) 70%);
-            border-radius: 50%;
-            z-index: -1;
-            filter: blur(20px);
-        }
-
-        /* --- SECURITY PRO --- */
-        .security {
-            padding: 120px 0;
-            display: flex;
-            align-items: center;
-            gap: 80px;
-            position: relative;
-        }
+        /* --- HERO --- */
+        .hero { padding: 180px 0 100px; position: relative; }
+        .hero-flex { display: flex; align-items: center; gap: 60px; }
+        .hero-content { flex: 1; }
+        .hero h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 24px; font-weight: 800; }
+        .hero h1 span { background: linear-gradient(to right, var(--primary), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 32px; max-width: 500px; }
         
-        .security::before {
-            content: '';
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(0,230,118,0.08) 0%, transparent 70%);
-            top: -100px;
-            left: -100px;
-            z-index: -1;
-            filter: blur(40px);
+        .hero-visual { flex: 1; position: relative; display: flex; justify-content: center; }
+        .mockup-main { 
+            width: 300px; border: 8px solid #1f2937; border-radius: 40px; 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8); transform: rotate(-3deg);
         }
-        
-        .security-icon-large {
-            font-size: 7rem;
-            background: linear-gradient(135deg, #00e676, #00c853);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 25px rgba(0,230,118,0.3));
-        }
-        
-        .security h2 {
-            font-size: 3rem;
-            margin-bottom: 25px;
-        }
-        
-        .security-list {
-            margin-top: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        .security-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 1.1rem;
-        }
-        
-        .security-item::before {
-            content: "✔";
-            color: #00e676;
-            font-weight: bold;
-            background: rgba(0,230,118,0.1);
-            padding: 5px 10px;
-            border-radius: 50px;
+        .glow-circle {
+            position: absolute; width: 400px; height: 400px; 
+            background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+            top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: -1; filter: blur(40px);
         }
 
-        /* --- SECCIÓN FUNCIONES PRINCIPALES --- */
-        .features {
-            padding: 100px 0;
-            background-color: var(--bg-card);
-            border-top: 1px solid rgba(255,255,255,0.03);
-            border-bottom: 1px solid rgba(255,255,255,0.03);
+        /* --- FEATURES SECTIONS --- */
+        section { padding: 100px 0; }
+        .section-tag { color: var(--primary); font-weight: 700; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: block; }
+        .section-title { font-size: 2.5rem; margin-bottom: 40px; }
+
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+        .f-card { 
+            background: var(--bg-card); padding: 32px; border-radius: 24px; 
+            border: 1px solid var(--border-glass); transition: 0.3s;
+        }
+        .f-card:hover { border-color: var(--primary); background: rgba(255,255,255,0.02); transform: translateY(-5px); }
+        .f-icon { font-size: 2rem; margin-bottom: 20px; display: block; }
+        .f-card h3 { margin-bottom: 12px; font-size: 1.3rem; }
+        .f-card p { font-size: 0.95rem; color: var(--text-muted); }
+
+        /* --- SPECIAL MODULE: IA GOV --- */
+        .module-ia { background: linear-gradient(180deg, var(--bg-dark) 0%, #0f172a 100%); border-radius: 40px; padding: 60px; }
+        .ia-flex { display: flex; align-items: center; gap: 80px; }
+        .ia-list { list-style: none; margin-top: 24px; }
+        .ia-list li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; color: var(--text-muted); }
+        .ia-list b { color: #fff; display: block; }
+        .ia-check { color: var(--accent-green); font-weight: bold; }
+
+        /* --- SECURITY --- */
+        .security-banner { 
+            background: var(--glass); border: 1px solid var(--border-glass); 
+            padding: 40px; border-radius: 30px; text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .security-banner::after {
+            content: "OFFLINE"; position: absolute; top: 10px; right: -30px;
+            background: var(--accent-green); color: #000; font-weight: 800;
+            padding: 5px 40px; transform: rotate(45deg); font-size: 0.7rem;
         }
 
-        .features-header {
-            text-align: center;
-            margin-bottom: 80px;
+        /* --- SCREENSHOTS --- */
+        .screenshot-scroll { 
+            display: flex; gap: 20px; overflow-x: auto; padding-bottom: 30px;
+            scrollbar-width: none;
         }
+        .screenshot-scroll::-webkit-scrollbar { display: none; }
+        .ss-item { 
+            min-width: 240px; height: 500px; background: #111; 
+            border-radius: 20px; border: 4px solid #1f2937; overflow: hidden;
+        }
+        .ss-item img { width: 100%; height: 100%; object-fit: cover; }
 
-        .features-header h2 {
-            font-size: 2.8rem;
-            margin-bottom: 15px;
-        }
+        /* --- FOOTER --- */
+        footer { padding: 80px 0 40px; border-top: 1px solid var(--border-glass); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+        .footer-logo { font-weight: 800; font-size: 1.5rem; margin-bottom: 20px; display: block; text-decoration: none; color: #fff; }
+        .footer-links h4 { margin-bottom: 20px; color: var(--primary); }
+        .footer-links a { display: block; text-decoration: none; color: var(--text-muted); margin-bottom: 10px; transition: 0.3s; }
+        .footer-links a:hover { color: #fff; }
+        .copyright { text-align: center; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border-glass); padding-top: 40px; }
 
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            background-color: var(--bg-dark);
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.03);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 179, 0, 0.2);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        /* Línea de acento futurista en hover */
-        .feature-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background-color: var(--primary);
-            transition: var(--transition);
-        }
-
-        .feature-card:hover::after {
-            width: 100%;
-        }
-
-        .feature-icon {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-
-        .feature-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-        }
-
-        /* --- SECCIÓN SEGURIDAD Y PRIVACIDAD (Crítica para generar necesidad) --- */
-
-        .security-visual {
-            flex: 1;
-            text-align: center;
-            position: relative;
-        }
-
-        .security-content {
-            flex: 1.2;
-        }
-
-        .security-icon-large {
-            font-size: 8rem;
-            color: var(--accent);
-            filter: drop-shadow(0 0 20px rgba(0, 230, 118, 0.3));
-            animation: pulse 3s infinite;
-        }
-
-        .security h2 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            color: var(--accent);
-        }
-
-        .security p {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-        }
-
-        .highlight-accent {
-            color: var(--accent);
-            font-weight: 600;
-        }
-
-        /* --- SECCIÓN MODO PRO (Generar valor) --- */
-        .pro {
-            padding: 100px 0;
-            background-color: var(--bg-card);
-            border-radius: 30px;
-            margin: 50px auto;
-            border: 1px solid rgba(255, 179, 0, 0.1);
-            position: relative;
-            box-shadow: var(--shadow-futuristic);
-        }
-
-        .pro-container {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-
-        .pro-content {
-            flex: 1.5;
-        }
-
-        .pro-images {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            gap: -20px;
-            position: relative;
-        }
-
-        .pro h2 {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .pro-subtitle {
-            font-size: 1.3rem;
-            color: var(--text-main);
-            margin-bottom: 30px;
-            font-weight: 600;
-        }
-
-        .pro-list {
-            list-style: none;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px 30px;
-            margin-bottom: 40px;
-        }
-
-        .pro-list li {
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .pro-list li::before {
-            content: '✦';
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-
-        .pro-trial {
-            color: var(--text-muted);
-            font-style: italic;
-            font-size: 0.95rem;
-        }
-
-        /* Mockups secundarios superpuestos */
-        .secondary-mockup {
-            width: 200px;
-            border-radius: 20px;
-            border: 4px solid #1a1a1a;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
-            transition: var(--transition);
-        }
-
-        .mockup-certificates {
-            transform: rotate(-10deg) translateX(20px);
-            z-index: 1;
-        }
-
-        .mockup-settings {
-            transform: rotate(5deg) translateX(-20px);
-            z-index: 2;
-        }
-
-        .pro-images:hover .mockup-certificates {
-            transform: rotate(-5deg) translateX(10px);
-        }
-
-        .pro-images:hover .mockup-settings {
-            transform: rotate(0deg) translateX(-10px);
-        }
-
-        /* --- SECCIÓN FINAL CTA (Cierre de Venta) --- */
-        .final-cta {
-            padding: 120px 0;
-            text-align: center;
-            background: radial-gradient(circle at center, rgba(255, 179, 0, 0.08) 0%, rgba(11, 15, 26, 0) 70%);
-        }
-
-        .final-cta h2 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .final-cta p {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .final-cta-desc {
-            margin-bottom: 50px;
-        }
-
-        /* --- SECCIÓN SCREENSHOTS --- */
-        .screenshots {
-            padding: 100px 0;
-            background: linear-gradient(180deg, rgba(255,179,0,0.03) 0%, rgba(0,0,0,0) 100%);
-        }
-        
-        .screenshots-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .screenshots-header h2 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-        }
-        
-        .screenshots-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px;
-        }
-        
-        .screenshot-card {
-            background: var(--bg-card);
-            border-radius: 20px;
-            padding: 15px;
-            text-align: center;
-            transition: var(--transition);
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        
-        .screenshot-card:hover img {
-            transform: scale(1.03);
-            transition: 0.3s;
-        }
-                
-        .screenshot-card img {
-            width: 100%;
-            height: 420px;
-            object-fit: cover;
-            border-radius: 15px;
-        }
-
-        .screenshot-card:hover {
-            box-shadow: 0 20px 60px rgba(255,179,0,0.35);
-        }
-        
-        .screenshot-title {
-            margin-top: 15px;
-            font-size: 0.95rem;
-            color: var(--text-muted);
-        }
-        
-                /* --- FOOTER --- */
-                footer {
-                    padding: 50px 0;
-                    border-top: 1px solid rgba(255,255,255,0.03);
-                    text-align: center;
-                    color: var(--text-muted);
-                    font-size: 0.9rem;
-                }
-
-        /* --- ANIMACIONES CSS --- */
-        @keyframes fadeInLeft {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes fadeInRight {
-            from { opacity: 0; transform: translateX(30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(0, 230, 118, 0.2)); }
-            50% { transform: scale(1.03); filter: drop-shadow(0 0 25px rgba(0, 230, 118, 0.4)); }
-            100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(0, 230, 118, 0.2)); }
-        }
-
-        /* --- RESPONSIVE DESIGN (Adaptación a Móviles) --- */
+        /* --- MOBILE ADAPTATION --- */
         @media (max-width: 992px) {
-            .hero, .security, .pro-container {
-                flex-direction: column;
-                text-align: center;
-                gap: 40px;
-            }
-
-            .hero { padding-top: 120px; }
-            .hero-visual { order: -1; } /* Imagen primero en móvil */
+            .hero-flex, .ia-flex, .footer-grid { flex-direction: column; text-align: center; grid-template-columns: 1fr; }
             .hero h1 { font-size: 2.8rem; }
-            .app-mockup-container { width: 280px; transform: rotate(0); }
-            .security-visual { order: -1; }
-            .security-icon-large { font-size: 6rem; }
-            .pro-list { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto 30px; }
-            .pro-images { display: none; } /* Ocultar mockups extra en móvil para limpiar */
-            .nav-links { display: none; } /* Menú simple en móvil */
+            .hero-content { display: flex; flex-direction: column; align-items: center; }
+            .hero-visual { order: -1; }
+            .mockup-main { width: 260px; }
+            .module-ia { padding: 30px; }
         }
     </style>
 </head>
@@ -606,212 +146,145 @@
     <header>
         <div class="container">
             <nav>
-                <a href="#" class="logo-container">
-                    <img src="logo.png" alt="FirmaPDF Pro Logo" class="logo-img">
-                    <span class="logo-text">FirmaPDF <span>Pro</span></span>
+                <a href="#" class="logo">
+                    <img src="logo.png" alt="FirmaPdf logo">
+                    <span class="logo-text">FirmaPdf <span>Pro</span></span>
                 </a>
-                <ul class="nav-links">
-                    <li><a href="#funciones">Funciones</a></li>
-                    <li><a href="#seguridad">Seguridad</a></li>
-                    <li><a href="#pro">Modo Pro</a></li>
-                </ul>
-                <a href="#" class="btn-playstore">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play Store">
-                    Descargar
+                <a href="https://play.google.com/store/apps/details?id=com.pirri_mori.firmapdf" class="btn-primary">
+                    Descargar App
                 </a>
             </nav>
         </div>
     </header>
 
     <section class="hero">
-        <div class="container hero-container">
-            <div class="hero-content">
-                <h1>Firma documentos PDF en <span>segundos</span></h1>
-                <p>Es la forma más rápida, segura y profesional de firmar documentos PDF directamente desde tu móvil.</p>
-                
-            </div>
-            <div class="hero-visual">
-                <div class="futuristic-glow"></div>
-                <div class="app-mockup-container">
-                    <img src="app-main.png" alt="FirmaPDF Pro App Main Screen" class="app-img">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="funciones" class="features">
         <div class="container">
-            <div class="features-header">
-                <h2>🚀 Funciones Principales</h2>
-                <p>Todo lo que necesitas para gestionar tus firmas digitales profesionalmente.</p>
+            <div class="hero-flex">
+                <div class="hero-content">
+                    <span class="section-tag">Firma Digital de Nueva Generación</span>
+                    <h1>Firma, Edita y Protege tus <span>PDF</span></h1>
+                    <p>La herramienta profesional para gestionar certificados digitales, escaneo inteligente y edición documental con privacidad total.</p>
+                    <div class="hero-btns">
+                        <a href="https://play.google.com/store/apps/details?id=com.pirri_mori.firmapdf" class="btn-primary">
+                            <span>Empezar Prueba Gratis</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="glow-circle"></div>
+                    <img src="app-main.png" alt="FirmaPdf Workspace" class="mockup-main">
+                </div>
             </div>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="container">
+            <span class="section-tag">Potencia tu flujo de trabajo</span>
+            <h2 class="section-title">Herramientas Profesionales</h2>
+            
             <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">✍️</div>
-                    <h3>Firma manual</h3>
-                    <p>Crea y usa tu propia firma natural directamente en la pantalla.</p>
+                <div class="f-card">
+                    <span class="f-icon">🔐</span>
+                    <h3>Certificados Oficiales</h3>
+                    <p>Firma con validez legal usando archivos .p12 o .pfx. Compatible con el Almacén de Credenciales de Android.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📄</div>
-                    <h3>Firma multipágina</h3>
-                    <p>Añade tu firma en una o todas las páginas del documento a la vez.</p>
+                <div class="f-card">
+                    <span class="f-icon">📸</span>
+                    <h3>Escáner con Filtros</h3>
+                    <p>Captura documentos físicos y límpialos con IA: filtros Mágico, Auto, Blanco y Negro y Ahorro de Tinta.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔐</div>
-                    <h3>Certificados digitales</h3>
-                    <p>Soporte completo para firma electrónica real legalmente vinculante.</p>
+                <div class="f-card">
+                    <span class="f-icon">📝</span>
+                    <h3>Relleno de Formularios</h3>
+                    <p>Completa campos interactivos y aplica los cambios permanentemente en el visor integrado.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Posicionamiento preciso</h3>
-                    <p>Coloca y redimensiona tu firma exactamente donde la necesitas.</p>
+                <div class="f-card">
+                    <span class="f-icon">🙈</span>
+                    <h3>Censura Permanente</h3>
+                    <p>Tacha información sensible. Los datos bajo el recuadro se eliminan físicamente del archivo.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">👀</div>
-                    <h3>Vista previa real</h3>
-                    <p>Visualiza el documento final antes de aplicar la firma definitiva.</p>
+                <div class="f-card">
+                    <span class="f-icon">📂</span>
+                    <h3>Organización Total</h3>
+                    <p>Une, divide, reordena, rota o añade páginas. Edita metadatos y añade numeración automática inteligente.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📝</div>
-                    <h3>Relleno de formularios</h3>
-                    <p>Completa campos de texto y formularios PDF fácilmente.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🛡️</div>
-                    <h3>Protección AES</h3>
-                    <p>Cifra tus PDFs con contraseña y la máxima seguridad de cifrado.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📚</div>
-                    <h3>Historial completo</h3>
-                    <p>Accede y gestiona rápidamente todos tus documentos firmados.</p>
+                <div class="f-card">
+                    <span class="f-icon">🛡️</span>
+                    <h3>Seguridad Avanzada</h3>
+                    <p>Bloqueo biométrico, encriptación AES-256 y modo "Ocultar en Recientes" para máxima privacidad.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="seguridad" class="security container">
-
-    <div class="security-visual">
-        <div class="security-icon-large">🛡️</div>
-    </div>
-
-    <div class="security-content">
-        <h2>Máxima Seguridad y Privacidad</h2>
-
-        <p>
-            Tus documentos <span class="highlight-accent">nunca salen de tu dispositivo</span>.
-        </p>
-
-        <p>
-            Todo el procesamiento se realiza <span class="highlight-accent">localmente</span>, 
-            garantizando una protección total de tus datos.
-        </p>
-
-        <div class="security-list">
-            <div class="security-item">Cifrado avanzado AES-256</div>
-            <div class="security-item">Procesamiento 100% local</div>
-            <div class="security-item">Sin servidores externos</div>
-            <div class="security-item">Privacidad total sin registros</div>
+    <section class="container">
+        <div class="module-ia">
+            <div class="ia-flex">
+                <div class="hero-visual">
+                    <img src="app-ia.jpg" alt="IA Gov" class="mockup-main" style="transform: rotate(3deg);">
+                </div>
+                <div class="hero-content" style="text-align: left;">
+                    <span class="section-tag" style="color: var(--accent-blue);">Módulo Especializado</span>
+                    <h2 class="section-title">IA Gov: Sedes Electrónicas</h2>
+                    <p>Diseñado para que tus documentos sean aceptados en la primera entrega ante administraciones públicas.</p>
+                    <ul class="ia-list">
+                        <li><span class="ia-check">✓</span> <div><b>Detección IA de Errores</b> Analiza DNIs, firmas faltantes y campos vacíos antes de enviar.</div></li>
+                        <li><span class="ia-check">✓</span> <div><b>Estándar PDF/A</b> Convierte tus archivos al estándar de preservación legal a largo plazo.</div></li>
+                        <li><span class="ia-check">✓</span> <div><b>Validación AutoFirma</b> Comprueba la compatibilidad técnica con las sedes electrónicas de España.</div></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </div>
-
     </section>
 
-    <section id="pro" class="pro container">
-        <div class="container pro-container">
-            <div class="pro-content">
-                <h2>⚡ Modo Pro</h2>
-                <p class="pro-subtitle">Desbloquea todas las funciones sin límites:</p>
-                <ul class="pro-list">
-                    <li>Firmas ilimitadas</li>
-                    <li>Uso de certificados digitales</li>
-                    <li>Sin restricciones</li>
-                    <li>Máximo rendimiento</li>
-                </ul>
-                <a href="#" class="btn-playstore">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play Store">
-                    Pruébalo Gratis
-                </a>
-                <p class="pro-trial">Prueba todas las funciones con el periodo de prueba gratuito.</p>
-            </div>
-            <div class="pro-images">
-                <img src="app-certificates.png" alt="FirmaPDF Pro Certificados" class="secondary-mockup mockup-certificates">
-                <img src="app-pro.jpg" alt="FirmaPDF Pro Ajustes" class="secondary-mockup mockup-settings">
+    <section>
+        <div class="container">
+            <div class="security-banner">
+                <h2 style="font-size: 2.2rem; margin-bottom: 16px;">Privacidad 100% Offline</h2>
+                <p style="max-width: 800px; margin: 0 auto;">Tus documentos y certificados <b>nunca salen de tu dispositivo</b>. FirmaPdf procesa todo localmente para garantizar que tu información privada permanezca bajo tu control absoluto.</p>
             </div>
         </div>
     </section>
 
     <section class="screenshots">
-    <div class="container">
-        <div class="screenshots-header">
-            <h2>📸 Capturas de la Aplicación</h2>
-            <p>Descubre cómo funciona FirmaPDF Pro en segundos.</p>
-        </div>
-
-        <div class="screenshots-grid">
-
-            <div class="screenshot-card">
-                <img src="app-home.jpg" alt="Pantalla principal FirmaPDF">
-                <div class="screenshot-title">Inicio rápido y sencillo</div>
-            </div>
-
-            <div class="screenshot-card">
-                <img src="app-certificates.png" alt="Certificados digitales">
-                <div class="screenshot-title">Gestión de certificados</div>
-            </div>
-
-            <div class="screenshot-card">
-                <img src="app-settings.jpg" alt="Ajustes de la app">
-                <div class="screenshot-title">Configuración avanzada</div>
-            </div>
-
-            <div class="screenshot-card">
-                <img src="app-organize.jpg" alt="Herramientas de la app">
-                <div class="screenshot-title">Herramientas de organización</div>
-            </div>
-
-            <div class="screenshot-card">
-                <img src="app-edit.jpg" alt="Herramientas de la app">
-                <div class="screenshot-title">Herramientas de edición</div>
-            </div>
-
-            <div class="screenshot-card">
-                <img src="app-sign.jpg" alt="Herramientas de la app">
-                <div class="screenshot-title">Herramientas para firmas</div>
-            </div>
-
-            <div class="screenshot-card">
-                <img src="app-ia.jpg" alt="Herramientas de la app">
-                <div class="screenshot-title">Herramientas de IA</div>
-            </div>
-
-            <div class="screenshot-card">
-                <img src="app-about.png" alt="Información de la app">
-                <div class="screenshot-title">Información y soporte</div>
-            </div>
-
-        </div>
-    </div>
-    </section>
-
-    <section class="final-cta">
         <div class="container">
-            <h2>📱 Sin Complicaciones</h2>
-            <p>No necesitas registrarte ni crear cuentas.</p>
-            <p class="final-cta-desc">Abre un PDF, firma y guarda en segundos. Está diseñado para ofrecer una experiencia profesional comparable a herramientas líderes como Adobe, pero con mayor simplicidad y velocidad.</p>
-            <p>Descárgala ahora y empieza a firmar documentos en segundos.</p>
-            <a href="#" class="btn-playstore">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play Store">
-                Descargar FirmaPDF
-            </a>
+            <h2 class="section-title">Explora la Interfaz</h2>
+            <div class="screenshot-scroll">
+                <div class="ss-item"><img src="app-home.jpg" alt="Home"></div>
+                <div class="ss-item"><img src="app-organize.jpg" alt="Organizar"></div>
+                <div class="ss-item"><img src="app-edit.jpg" alt="Edición"></div>
+                <div class="ss-item"><img src="app-sign.jpg" alt="Firmas"></div>
+                <div class="ss-item"><img src="app-ia.jpg" alt="IA"></div>
+                <div class="ss-item"><img src="app-certificates.png" alt="Certificados"></div>
+                <div class="ss-item"><img src="app-settings.jpg" alt="Ajustes"></div>
+            </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>Desarrollado con ❤️ por pirri_mori</p>
-            <p>&copy; 2024 FirmaPDF Pro · Verifique su Identidad con Confianza</p>
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="#" class="footer-logo">FirmaPdf <span>Pro</span></a>
+                    <p>Tu herramienta de productividad legal definitiva. Desarrollado con precisión para usuarios exigentes.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegación</h4>
+                    <a href="#features">Funciones</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.pirri_mori.firmapdf">Descargar</a>
+                    <a href="mailto:pirrimori@gmail.com">Soporte</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <a href="privacy.html">Privacidad</a>
+                    <a href="terms.html">Términos</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>Desarrollado con ❤️ por pirri_mori en España</p>
+                <p>&copy; 2024 FirmaPdf Professional. Todos los derechos reservados.</p>
+            </div>
         </div>
     </footer>
 
